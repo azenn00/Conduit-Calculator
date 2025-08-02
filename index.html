@@ -1,91 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Conduit Fill Calculator | NEC-Compliant EMT & PVC Sizing Tool</title>
-  <meta name="description" content="Instantly calculate conduit fill and size requirements for EMT and PVC using NEC wire fill rules. Easy, mobile-friendly tool for electricians and apprentices.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conduit Calculator</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f2f2f2; }
-    label, select, input { display: block; margin-top: 15px; width: 100%; max-width: 400px; }
-    button { margin-top: 20px; padding: 10px; background: #2c3e50; color: white; border: none; cursor: pointer; }
-    .output { margin-top: 30px; background: white; padding: 15px; border-radius: 5px; }
-  </style>
-</head>
-<body>
-  <h1>Conduit Fill Calculator (EMT & PVC)</h1>
-
-  <label for="wireSize">Wire Size:</label>
-  <select id="wireSize">
-    <option value="0.0133">#14</option>
-    <option value="0.0211">#12</option>
-    <option value="0.0267">#10</option>
-    <option value="0.0366">#8</option>
-    <option value="0.0507">#6</option>
-    <option value="0.0824">#4</option>
-    <option value="0.1158">#2</option>
-  </select>
-
-  <label for="wireCount">Number of Wires:</label>
-  <input type="number" id="wireCount" min="1" value="3" />
-
-  <label for="conduitType">Conduit Type:</label>
-  <select id="conduitType">
-    <option value="emt">EMT</option>
-    <option value="pvc">PVC Schedule 40</option>
-  </select>
-
-  <button onclick="calculate()">Calculate</button>
-
-  <div class="output" id="result"></div>
-
-  <script>
-    const conduitSizes = {
-      emt: {
-        "0.5": 0.122,
-        "0.75": 0.213,
-        "1": 0.346,
-        "1.25": 0.598,
-        "1.5": 0.832,
-        "2": 1.342
-      },
-      pvc: {
-        "0.5": 0.122,
-        "0.75": 0.2,
-        "1": 0.333,
-        "1.25": 0.58,
-        "1.5": 0.78,
-        "2": 1.2
-      }
-    };
-
-    function calculate() {
-      const wireArea = parseFloat(document.getElementById('wireSize').value);
-      const wireCount = parseInt(document.getElementById('wireCount').value);
-      const conduitType = document.getElementById('conduitType').value;
-
-      const totalWireArea = wireArea * wireCount;
-      const fillLimit = 0.4;
-
-      let resultHTML = `<h2>Results</h2>`;
-      let found = false;
-
-      for (let [size, area] of Object.entries(conduitSizes[conduitType])) {
-        let percentFill = totalWireArea / area;
-        if (percentFill <= fillLimit) {
-          resultHTML += `<p>Minimum conduit size: <strong>${size}"</strong> ${conduitType.toUpperCase()}<br>`;
-          resultHTML += `Total fill: ${(percentFill * 100).toFixed(1)}% (Limit: ${fillLimit * 100}%)</p>`;
-          found = true;
-          break;
-        }
-      }
-
-      if (!found) {
-        resultHTML += `<p style="color:red;">Wires exceed max fill for 2" conduit. Consider upsizing or splitting circuits.</p>`;
-      }
-
-      document.getElementById('result').innerHTML = resultHTML;
+    body {
+      font-family: sans-serif;
+      background: #f3f7fb;
+      padding: 2rem;
+      text-align: center;
     }
-  </script>
-</body>
-</html>
+    h1 {
+      color: #333;
+    }
+    .box {
+      background: white;
+      padding: 2rem;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
