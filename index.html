@@ -32,46 +32,7 @@
 <body>
   <div class="box">
     <h1>Conduit Fill Calculator</h1>
-    <label for="wire">Select Wire Size:</label>
-    <select id="wire">
-      <option value="0.03">14 AWG</option>
-      <option value="0.05">12 AWG</option>
-      <option value="0.08">10 AWG</option>
-      <option value="0.102">8 AWG</option>
-    </select>
-
-    <label for="conduit">Conduit Size (sq in):</label>
-    <select id="conduit">
-      <option value="0.5">1/2"</option>
-      <option value="0.8">3/4"</option>
-      <option value="1.0">1"</option>
-      <option value="1.5">1-1/4"</option>
-    </select>
-
-    <label for="count">Number of Wires:</label>
-    <input type="number" id="count" value="3" min="1">
-
-    <button onclick="calculate()">Calculate</button>
-    <p id="result"></p>
-  </div>
-
-  <script>
-    function calculate() {
-      const wire = parseFloat(document.getElementById('wire').value);
-      const conduit = parseFloat(document.getElementById('conduit').value);
-      const count = parseInt(document.getElementById('count').value);
-      const fill = (wire * count) / conduit * 100;
-
-      document.getElementById('result').innerText =
-        `Fill = ${fill.toFixed(1)}%. Max recommended = 40%.`;
-    }
-  </script>
-</body>
-</html>
-</head>
-<body>
-  <div class="box">
-    <h1>Conduit Fill Calculator</h1>
+    
     <label for="wire">Select Wire Size:</label>
     <select id="wire">
       <option value="0.03">14 AWG</option>
